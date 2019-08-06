@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ViewService {
 	List<Category> viewCategory();
-	List<Category> viewProducts();
+	List<Product> viewProduct();
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sms.dao.ViewDao;
 import com.sms.model.Category;
+import com.sms.model.Product;
 
 public class ViewServiceImpl implements ViewService{
 	@Autowired
@@ -19,8 +20,8 @@ public class ViewServiceImpl implements ViewService{
 	}
 
 	@Override
-	public List<Category> viewProducts() {
-		return viewDao.getAllProducts();
+	public List<Product> viewProduct() {
+		return viewDao.getAllProduct();
 		
 	}
 
