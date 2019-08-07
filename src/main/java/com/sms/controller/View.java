@@ -54,5 +54,4 @@ public class View {
 		return model;
 
 	}
-
 }

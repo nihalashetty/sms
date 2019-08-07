@@ -28,7 +28,7 @@
 						<td>${cat.categoryName}</td>
 						<td>${cat.categoryManufacturingPrice}</td>
 						<td>${cat.categoryTotalEarnings}</td>
-						<td><button type="button">Buy</button></td>
+						<td><button type="button">View</button></td>
 					</tr>
 
 
