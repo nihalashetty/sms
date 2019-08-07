@@ -9,4 +9,5 @@ import com.sms.model.Product;
 public interface ViewDao {
 	List<Category> getAllCategory();
 	List<Product> getAllProduct();
+	List<Product> getCategory(Product product);
 }

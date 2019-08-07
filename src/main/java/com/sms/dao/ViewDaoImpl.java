@@ -67,6 +67,31 @@ public class ViewDaoImpl implements ViewDao {
 		return list;
 
 	}
+
+	@Override
+	public List<Product> getCategory(Product product) {
+		List<Product> list = jdbcTemplate.query("SELECT * FROM products where pcategory='"+product.getProductCategory()+"'", new RowMapper<Product>() {
+
+			@Override
+			public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Product prod = new Product();
+
+				prod.setProductId(rs.getInt("pid"));
+				prod.setProductName(rs.getString("pname"));
+				prod.setProductCategory(rs.getInt("pcategory"));
+				prod.setProductQuantity(rs.getInt("pquantity"));
+				prod.setProductCostPrice(rs.getInt("pcprice"));
+				prod.setProductSellingPrice(rs.getInt("psprice"));
+				prod.setProductOrdersMade(rs.getInt("ordersmade"));
+				prod.setProductEarnings(rs.getInt("pearnings"));
+				return prod;
+			}
+
+		});
+		System.out.println(list);
+		return list;
+
+	}
 	
 	
 	

@@ -25,4 +25,9 @@ public class ViewServiceImpl implements ViewService{
 		
 	}
 
+	@Override
+	public List<Product> searchCategory(Product product) {
+		return viewDao.getCategory(product);
+	}
+
 }

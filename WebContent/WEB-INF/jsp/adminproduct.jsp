@@ -35,7 +35,11 @@
 						<td>${prod.productSellingPrice}</td>
 						<td>${prod.productOrdersMade}</td>
 						<td>${prod.productEarnings}</td>
-						<td><button type="button">Edit</button></td>
+						<td>
+						<form modelAttribute="product" action="delproduct" method="post">
+						<button name="productId" value="${prod.productId}" type="submit">${prod.productId}Delete</button>
+						</form>
+						</td>
 					</tr>
 
 

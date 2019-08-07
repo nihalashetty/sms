@@ -9,4 +9,5 @@ import java.util.List;
 public interface ViewService {
 	List<Category> viewCategory();
 	List<Product> viewProduct();
+	List<Product> searchCategory(Product product);
 }

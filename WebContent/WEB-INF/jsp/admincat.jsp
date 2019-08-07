@@ -5,35 +5,40 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body>
-	<div class="container">
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Category NAME</th>
-					<th>Category Manufacturing Price</th>
-					<th> Total Earnings</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="cat" items="${cat}" varStatus="status">
+		<div class="container">
+			<table class="table">
+				<thead>
 					<tr>
-						<td>${cat.categoryId}</td>
-						<td>${cat.categoryName}</td>
-						<td>${cat.categoryManufacturingPrice}</td>
-						<td>${cat.categoryTotalEarnings}</td>
-						<td><button type="button">Edit</button></td>
+						<th>Id</th>
+						<th>Category NAME</th>
+						<th>Category Manufacturing Price</th>
+						<th>Total Earnings</th>
+						<th></th>
 					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="cat" items="${cat}" varStatus="status">
+						<tr>
+							<td>${cat.categoryId}</td>
+							<td>${cat.categoryName}</td>
+							<td>${cat.categoryManufacturingPrice}</td>
+							<td>${cat.categoryTotalEarnings}</td>
+						</tr>
+					</c:forEach>
+			</table>
+		</div>
 
-
-				</c:forEach>
-		</table>
-	</div>
 </body>
 </html>

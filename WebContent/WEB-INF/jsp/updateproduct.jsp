@@ -18,9 +18,11 @@
 
 </head>
 <body>
+	<h1>Add New Product</h1>
+	<hr>
 	<div class="container">
-		<form id="insertcat" modelAttribute="category"
-			action="updatecatprocess" method="post">
+		<form id="insertprod" modelAttribute="product"
+			action="updateprodprocess" method="post">
 			<table>
 				<tr>
 					<td><label path="productName">Product Name </label></td>
@@ -28,11 +30,14 @@
 						id="productName" type="text" required></td>
 				</tr>
 				<tr>
-					<select name="categoryId">
+					<td><label path="productCategory">Product Category</label></td>
+					<td>
+					<select name="productCategory">
 						<c:forEach var="cat" items="${cat}">
-							<option value=${cat.categoryId}>${cat.categoryName}</option>
+							<option value="${cat.categoryId}">${cat.categoryName} ${cat.categoryId}</option>
 						</c:forEach>
 					</select>
+					</td>
 				</tr>
 				<tr>
 					<td><label path="productQuantity">Product Quantity</label></td>
@@ -53,7 +58,7 @@
 					<td>&nbsp;</td>
 					<td>
 						<button onclick="myFunction()" class="btn btn-primary"
-							id="submitBtn" type="submit">Add Category</button>
+							id="submitBtn" type="submit">Add Product</button>
 					</td>
 				</tr>
 			</table>

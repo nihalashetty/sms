@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -28,6 +29,7 @@
 		$("#addcat").click(function() {
 			$("#div1").load("updatecat");
 		});
+
 	});
 </script>
 <style>
@@ -83,12 +85,23 @@ footer {
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li ><a href="#">Home</a></li>
 					<li><a id="cat">Category</a></li>
 					<li><a id="prod">Products</a></li>
-					<li ><a id="addprod">Add Products</a></li>
-					<li ><a id="addcat">Add Category</a></li>
+					<li><a id="addprod">Add Products</a></li>
+					<li><a id="addcat">Add Category</a></li>
 				</ul>
+				<form id="search" class="navbar-form navbar-left"
+					action="searchcategory" method="post">
+					<div class="form-group">
+						<select name="productCategory">
+							<c:forEach var="cat" items="${cat}">
+								<option value="${cat.categoryId}">${cat.categoryName}
+									${cat.categoryId}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="login"><span
 							class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -102,7 +115,7 @@ footer {
 
 			<div class="col-sm-12 text-left">
 				<div id="div1">
-					<h2>Let jQuery AJAX Change This Text</h2>
+					<h2>Welcome Admin</h2>
 				</div>
 
 			</div>

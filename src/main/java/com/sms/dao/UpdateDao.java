@@ -6,5 +6,5 @@ import com.sms.model.Product;
 public interface UpdateDao {
 	void updateCat(Category category);
 	void updateProd(Product product);
-
+	void delProduct(Product product);
 }
