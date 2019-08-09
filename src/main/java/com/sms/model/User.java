@@ -1,6 +1,7 @@
 package com.sms.model;
 
 public class User {
+	private int userid;
 	private String username;
 	private String password;
 	private String email;
@@ -19,6 +20,14 @@ public class User {
 
 	public String getPassword() {
 		return password;
+	}
+
+	public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 
 	public void setPassword(String password) {

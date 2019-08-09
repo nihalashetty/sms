@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sms.model.Category;
+import com.sms.model.Order;
 import com.sms.model.Product;
 import com.sms.model.User;
 import com.sms.service.UpdateService;
@@ -36,11 +37,10 @@ public class UpdateItems {
 	}
 
 	@RequestMapping(value = "/updatecatprocess", method = RequestMethod.POST)
-	public ModelAndView updateCatProcess(HttpServletRequest request, HttpServletResponse response,
+	public void updateCatProcess(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("category") Category category) throws IOException {
 		updateService.updateCat(category);
-		ModelAndView mav = null;
-		return new ModelAndView("admin", "message", "success");
+
 
 	}
 
@@ -54,20 +54,23 @@ public class UpdateItems {
 	}
 
 	@RequestMapping(value = "/updateprodprocess", method = RequestMethod.POST)
-	public ModelAndView updateProdProcess(HttpServletRequest request, HttpServletResponse response,
+	public void updateProdProcess(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("product") Product product) throws IOException {
 		updateService.updateProd(product);
-		ModelAndView mav = null;
-		return new ModelAndView("admin", "message", "success");
+
 
 	}
 	
 	@RequestMapping(value = "/delproduct", method = RequestMethod.POST)
-	public ModelAndView delProductProcess(HttpServletRequest request, HttpServletResponse response,
+	public void delProductProcess(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("product") Product product) throws IOException{
-			System.out.println(product.getProductId());
 			updateService.delProduct(product);
-			return new ModelAndView("admin", "message", "success");
-		
+	}
+	
+	@RequestMapping(value = "/dispatch", method = RequestMethod.POST)
+	public void dispatchProduct(HttpServletRequest request, HttpServletResponse response,
+			@ModelAttribute("order") Order order) throws IOException {
+			updateService.dispatchProduct(order);
+
 	}
 }

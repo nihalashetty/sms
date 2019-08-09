@@ -16,7 +16,29 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+	/* When the user clicks on the button, 
+	 toggle between hiding and showing the dropdown content */
+	function myDFunction() {
+		document.getElementById("myDropdown").classList.toggle("show");
+	}
+
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+		if (!event.target.matches('.dropbtn')) {
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+	}
 	$(document).ready(function() {
+		$("#cust").click(function() {
+			$("#div1").load("customers");
+		});
 		$("#cat").click(function() {
 			$("#div1").load("admincat");
 		});
@@ -29,10 +51,62 @@
 		$("#addcat").click(function() {
 			$("#div1").load("updatecat");
 		});
+		$("#supp").click(function() {
+			$("#div1").load("viewsuppliers");
+		});
+		$("#pord").click(function() {
+			$("#div1").load("pendingorders");
+		});
+		$("#dord").click(function() {
+			$("#div1").load("dispatchedorders");
+		});
 
 	});
 </script>
 <style>
+.dropbtn {
+	background-color: black;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+	background-color: #2980B9;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	overflow: auto;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown a:hover {
+	background-color: #ddd;
+}
+
+.show {
+	display: block;
+}
+
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 	margin-bottom: 0;
@@ -71,7 +145,6 @@ footer {
 </style>
 </head>
 <body>
-
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -85,10 +158,19 @@ footer {
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
+					<li><a id="cust">Customers</a></li>
 					<li><a id="cat">Category</a></li>
 					<li><a id="prod">Products</a></li>
 					<li><a id="addprod">Add Products</a></li>
 					<li><a id="addcat">Add Category</a></li>
+					<li><a id="supp">Suppliers</a></li>
+					<div class="dropdown">
+						<button onclick="myDFunction()" class="dropbtn">Orders</button>
+						<div id="myDropdown" class="dropdown-content">
+							<a id="pord">Pending Orders</a> <a id="dord">Dispatched
+								Orders</a>
+						</div>
+					</div>
 				</ul>
 				<form id="search" class="navbar-form navbar-left"
 					action="searchcategory" method="post">
@@ -100,7 +182,7 @@ footer {
 							</c:forEach>
 						</select>
 					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default">Search</button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="login"><span

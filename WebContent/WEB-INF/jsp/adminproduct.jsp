@@ -7,6 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	function myFunction() {
+		alert("Successfully Deleted");
+	}
+</script>
 </head>
 <body>
 	<div class="container">
@@ -37,7 +42,7 @@
 						<td>${prod.productEarnings}</td>
 						<td>
 						<form modelAttribute="product" action="delproduct" method="post">
-						<button name="productId" value="${prod.productId}" type="submit">${prod.productId}Delete</button>
+						<button onClick="myFunction()" name="productId" value="${prod.productId}" type="submit">Delete</button>
 						</form>
 						</td>
 					</tr>
