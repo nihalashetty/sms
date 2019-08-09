@@ -41,9 +41,15 @@ public class UpdateDaoImpl implements UpdateDao {
 	@Override
 	public void dispatchProduct(Order order) {
 		// TODO Auto-generated method stub
-		System.out.println(order.getSupplierId());
-		System.out.println(order.getOrderId());
+
 		String sql = "UPDATE `order` SET `deliverystatus`='dispatched',`suplierid`='"+order.getSupplierId()+"' WHERE `oid`='"+order.getOrderId()+"'";
 		jdbcTemplate.update(sql);
+	}
+
+	@Override
+	public void updateChosenCat(Category category) {
+		String sql = "UPDATE pcategory SET catname='"+category.getCategoryName()+"', tmpcat='"+category.getCategoryManufacturingPrice()+"' WHERE catid='"+category.getCategoryId()+"'";
+		jdbcTemplate.update(sql);
+		
 	}
 }

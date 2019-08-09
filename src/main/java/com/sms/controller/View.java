@@ -121,5 +121,16 @@ public class View {
 		return model;
 
 	}
+	@RequestMapping(value = "/choosecategory")
+	public ModelAndView chooseCategory(HttpServletRequest request, HttpServletResponse response,
+			@ModelAttribute("Category") Category category) throws IOException {
+		System.out.println(category.getCategoryId());
+		List<Category> cat = viewService.chooseCategory(category);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("cat", cat );
+		mav.setViewName("editchosencat");
+		return mav;
+
+	}
 	
 }

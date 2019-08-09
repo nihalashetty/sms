@@ -17,4 +17,5 @@ public interface ViewDao {
 	List<Order> getAllPendingOrders();
 	List<Order> getAllDispatchedOrders();
 	List<User> getAllCustomers();
+	List<Category> getChosenCat(Category category);
 }

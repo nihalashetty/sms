@@ -44,15 +44,15 @@
 	<hr>
 	<h4>Choose Category</h4>
 	<div class="container">
-		<form id="search" modelAttribute="category" action="searchcategory"
+		<form id="search" modelAttribute="category" action="choosecategory"
 			method="post">
 			<table>
 				<tr>
 					<td><label path="Category"></label></td>
 					<td><select name="categoryId">
 							<c:forEach var="cat" items="${cat}">
-								<option value="${cat.categoryId}">${cat.categoryName}
-									${cat.categoryId}</option>
+								<option name="categoryId" value="${cat.categoryId}">${cat.categoryName}
+									</option>
 							</c:forEach>
 					</select></td>
 				</tr>

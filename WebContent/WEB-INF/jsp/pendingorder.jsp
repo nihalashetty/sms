@@ -44,7 +44,7 @@
 										</c:forEach>
 									</select>
 								</div>
-								<input type="text" name="orderId" value="${ord.orderId}" readonly>
+								<input type="hidden" name="orderId" value="${ord.orderId}" readonly>
 								<button type="submit" class="btn btn-default">Submit</button>
 							</form>
 						</td>

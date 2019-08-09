@@ -14,4 +14,5 @@ public interface ViewService {
 	List<Order> viewPendingOrders();
 	List<Order> viewDispatchedOrders();
 	List<User> viewCustomer();
+	List<Category> chooseCategory(Category category );
 }

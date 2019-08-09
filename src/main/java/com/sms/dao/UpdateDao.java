@@ -9,4 +9,5 @@ public interface UpdateDao {
 	void updateProd(Product product);
 	void delProduct(Product product);
 	void dispatchProduct(Order order);
+	void updateChosenCat(Category category);
 }

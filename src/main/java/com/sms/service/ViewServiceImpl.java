@@ -57,4 +57,10 @@ public class ViewServiceImpl implements ViewService{
 		return viewDao.getAllCustomers();
 	}
 
+	@Override
+	public List<Category> chooseCategory(Category category) {
+		// TODO Auto-generated method stub
+		return viewDao.getChosenCat(category);
+	}
+
 }

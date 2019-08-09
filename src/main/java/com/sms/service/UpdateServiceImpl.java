@@ -36,4 +36,11 @@ public class UpdateServiceImpl implements UpdateService{
 
 	}
 
+	@Override
+	public void updateChosenCat(Category category) {
+		// TODO Auto-generated method stub
+		updateDao.updateChosenCat(category);
+		
+	}
+
 }

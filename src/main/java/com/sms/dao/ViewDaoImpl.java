@@ -191,6 +191,27 @@ public class ViewDaoImpl implements ViewDao {
 		return list;
 	}
 
+	@Override
+	public List<Category> getChosenCat(Category category) {
+		List<Category> list = jdbcTemplate.query(
+				"SELECT * FROM pcategory where catid='" + category.getCategoryId() + "'",
+				new RowMapper<Category>() {
+
+					@Override
+					public Category mapRow(ResultSet rs, int rowNum) throws SQLException {
+						Category cate=new Category();
+
+						cate.setCategoryId(rs.getInt("catid"));
+						cate.setCategoryName(rs.getString("catname"));
+						cate.setCategoryManufacturingPrice(rs.getInt("tmpcat"));
+						cate.setCategoryTotalEarnings(rs.getInt("tprofitcat"));
+						return cate;
+					}
+
+				});
+		return list;
+	}
+
 	
 
 }

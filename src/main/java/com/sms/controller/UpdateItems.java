@@ -73,4 +73,10 @@ public class UpdateItems {
 			updateService.dispatchProduct(order);
 
 	}
+	@RequestMapping(value = "/editcategorys", method = RequestMethod.POST)
+	public void editChosenCat(HttpServletRequest request, HttpServletResponse response,
+			@ModelAttribute("category") Category category) throws IOException {
+		updateService.updateChosenCat(category);
+
+	}
 }
