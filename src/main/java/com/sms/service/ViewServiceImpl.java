@@ -63,4 +63,12 @@ public class ViewServiceImpl implements ViewService{
 		return viewDao.getChosenCat(category);
 	}
 
+	@Override
+	public int getTotalProfit() {
+		// TODO Auto-generated method stub
+		return viewDao.getTotalProfit();
+	}
+
+
+
 }

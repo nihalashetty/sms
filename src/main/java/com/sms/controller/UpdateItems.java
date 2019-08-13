@@ -37,11 +37,12 @@ public class UpdateItems {
 	}
 
 	@RequestMapping(value = "/updatecatprocess", method = RequestMethod.POST)
-	public void updateCatProcess(HttpServletRequest request, HttpServletResponse response,
+	public ModelAndView updateCategoryProcess(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("category") Category category) throws IOException {
 		updateService.updateCat(category);
-
-
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("success");
+		return mav;
 	}
 
 	@RequestMapping(value = "/updateprod", method = RequestMethod.GET)
@@ -54,29 +55,38 @@ public class UpdateItems {
 	}
 
 	@RequestMapping(value = "/updateprodprocess", method = RequestMethod.POST)
-	public void updateProdProcess(HttpServletRequest request, HttpServletResponse response,
+	public ModelAndView updateProdProcess(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("product") Product product) throws IOException {
 		updateService.updateProd(product);
-
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("success");
+		return mav;
 
 	}
 	
 	@RequestMapping(value = "/delproduct", method = RequestMethod.POST)
-	public void delProductProcess(HttpServletRequest request, HttpServletResponse response,
+	public ModelAndView delProductProcess(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("product") Product product) throws IOException{
 			updateService.delProduct(product);
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("success");
+			return mav;
 	}
 	
 	@RequestMapping(value = "/dispatch", method = RequestMethod.POST)
-	public void dispatchProduct(HttpServletRequest request, HttpServletResponse response,
+	public ModelAndView dispatchProduct(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("order") Order order) throws IOException {
 			updateService.dispatchProduct(order);
-
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("success");
+			return mav;
 	}
 	@RequestMapping(value = "/editcategorys", method = RequestMethod.POST)
-	public void editChosenCat(HttpServletRequest request, HttpServletResponse response,
+	public ModelAndView editChosenCat(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("category") Category category) throws IOException {
 		updateService.updateChosenCat(category);
-
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("success");
+		return mav;
 	}
 }

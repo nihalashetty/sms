@@ -212,6 +212,11 @@ public class ViewDaoImpl implements ViewDao {
 		return list;
 	}
 
+	@Override
+	public int getTotalProfit() {
+		
+		return 10000;
+	}
 	
 
 }

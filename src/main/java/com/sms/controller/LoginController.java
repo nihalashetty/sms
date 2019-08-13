@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,7 +24,7 @@ import com.sms.service.ViewService;
 public class LoginController {
 	@Autowired
 	UserService userService;
-	
+
 	@Autowired
 	ViewService viewService;
 
@@ -30,34 +32,46 @@ public class LoginController {
 	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView("login");
 		mav.addObject("login", new Login());
+		
 		return mav;
 	}
 
+	@SuppressWarnings("null")
 	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
-	public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
+	public ModelAndView loginProcess(HttpSession session, HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("login") Login login) {
-		ModelAndView mav =null;
+		ModelAndView mav = null;
 		List<Category> cat = viewService.viewCategory();
 		User user = userService.validateUser(login);
-		if(login.getUsername().contains("admin-")){
+		if (login.getUsername().contains("admin-")) {
 			if (user != null) {
+				session.setAttribute("name", user.getUsername());
 				mav = new ModelAndView("admin");
 				mav.addObject("firstname", user.getUsername());
+				mav.addObject("profit", viewService.getTotalProfit());
 				mav.addObject("cat", cat);
 			} else {
 				mav = new ModelAndView("login");
 				mav.addObject("message", "admin username or Password is wrong!!");
 			}
-		}else{
-		if (user != null) {
-			mav = new ModelAndView("welcome");
-			mav.addObject("cat", cat);
-			mav.addObject("firstname", user.getUsername());
 		} else {
-			mav = new ModelAndView("login");
+			if (user != null) {
+				mav = new ModelAndView("welcome");
+				mav.addObject("cat", cat);
+				mav.addObject("firstname", user.getUsername());
+			} else {
+				mav = new ModelAndView("login");
 				mav.addObject("message", "Username or Password is wrong!!");
 			}
 		}
+		return mav;
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView("login");
+		HttpSession session = request.getSession();
+		session.invalidate();
 		return mav;
 	}
 }

@@ -18,4 +18,5 @@ public interface ViewDao {
 	List<Order> getAllDispatchedOrders();
 	List<User> getAllCustomers();
 	List<Category> getChosenCat(Category category);
+	int getTotalProfit();
 }

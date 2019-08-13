@@ -82,7 +82,7 @@ public class View {
 	}
 	
 	@RequestMapping(value = "/searchcategory")
-	public ModelAndView searchCat(HttpServletRequest request, HttpServletResponse response,
+	public ModelAndView searchCategory(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("product") Product product) throws IOException {
 		List<Product> cat = viewService.searchCategory(product);
 		ModelAndView mav = new ModelAndView();

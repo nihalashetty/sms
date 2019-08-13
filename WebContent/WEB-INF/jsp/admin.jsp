@@ -5,8 +5,14 @@
 <html lang="en">
 <head>
 <title>STOCK MANAGEMENT SYSTEM</title>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta Http-Equiv="Cache-Control" Content="no-cache">
+<meta Http-Equiv="Pragma" Content="no-cache">
+<meta Http-Equiv="Expires" Content="0">
+<META HTTP-EQUIV="Cache-Control"
+	CONTENT="No-Cache,Must-Revalidate,No-Store">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script
@@ -16,8 +22,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-	/* When the user clicks on the button, 
-	 toggle between hiding and showing the dropdown content */
 	function myDFunction() {
 		document.getElementById("myDropdown").classList.toggle("show");
 	}
@@ -145,6 +149,16 @@ footer {
 </style>
 </head>
 <body>
+	<%
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Cache-Control", "no-store");
+		response.setHeader("Pragma", "no-cache");
+		response.setDateHeader("Expires", 0);
+		if (session.getAttribute("name") == null) {
+			response.sendRedirect("login");
+		}
+		System.out.print(session.getAttribute("name"));
+	%>
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -198,6 +212,8 @@ footer {
 			<div class="col-sm-12 text-left">
 				<div id="div1">
 					<h2>Welcome Admin</h2>
+					<h3>Total Profit To Company</h3>
+					<h4>${profit}</h4>
 				</div>
 
 			</div>

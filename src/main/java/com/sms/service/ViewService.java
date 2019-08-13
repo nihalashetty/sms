@@ -15,4 +15,5 @@ public interface ViewService {
 	List<Order> viewDispatchedOrders();
 	List<User> viewCustomer();
 	List<Category> chooseCategory(Category category );
+	int getTotalProfit();
 }
